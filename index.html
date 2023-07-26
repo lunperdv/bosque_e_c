@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+    <title>perdido</title>
+  </head>
+
+  
+  <script>
+    AFRAME.registerComponent('redirect', {
+  
+      schema: {
+        href: {default: ''}
+      },
+  
+      init: function() {
+        var data = this.data;
+        var el = this.el;  // <a-box>
+  
+         // react to the click
+         this.el.addEventListener('click', function () {
+           // navigate to another url
+           window.location = data.href;
+         })
+      }
+    });
+</script>
+
+
+  
+  <body>
+    <a-scene>
+
+    <a-entity environment= 
+    "preset: default; 
+    skyType: gradient; 
+    skyColor: #170945; 
+    horizonColor: #134852;
+    lighting: distant;
+    shadow: true;
+    shadowSize: 50; 
+    lightPosition: -10 6 -50;
+    fog: 0.8;
+    ground: noise;
+    groundYScale: 5; 
+    groundTexture: walkernoise; 
+    groundColor: #476252; 
+    groundColor2: #2A1406; 
+    dressing: trees; 
+    dressingAmount: 120; 
+    dressingColor: #105C3E;
+    dressingScale: 3;
+    dressingVariance: 2 2 3;
+    dressingUniformScale: false;
+    grid: none;
+    gridColor: #FFFF00;"> </a-entity>
+
+    <a-text value="Encuentra el Portal" color="#7E748A" position="-1 3 -2"></a-text> 
+
+    <a-box 
+    color="red" 
+    position=" 0 4 -95"
+    redirect="href: https://lunperdv.github.io/p5js_text_3d/"
+    > </a-box>
+
+    <a-box 
+    color="blue" 
+    position=" 0 4 95"
+    redirect="href: https://lunperdv.github.io/"
+    > </a-box>
+    
+
+    <a-camera position="0 3 0"> 
+    <a-entity cursor="fuse: false; rayOrigin:mouse;" raycaster="objects:a-box" position="0 4 -95" >
+    </a-entity>
+    <a-entity cursor="fuse: false; rayOrigin:mouse;" raycaster="objects:a-box" position="0 4 95" >
+    </a-entity>
+    </a-camera>
+   
+  </a-scene>
+  </body>
+</html>
